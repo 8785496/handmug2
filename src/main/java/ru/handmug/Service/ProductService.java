@@ -14,6 +14,7 @@ public class ProductService {
 
         return new ArrayList<Product>(){{
             add(new Product("Кружка", "Кружка", 300.0f, category1));
+            add(new Product("Шкатулка", "Кружка", 300.0f, category1));
         }};
     }
 }

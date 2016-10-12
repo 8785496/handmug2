@@ -15,15 +15,15 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    @Autowired
-    ProductService productService;
-
-
-    @RequestMapping("/")
-    public String index(Model model){
-
-        List<Product> products = productService.getProducts();
-        model.addAttribute("product", products);
-        return "index";
-    }
+//    @Autowired
+//    ProductService productService;
+//
+//
+//    @RequestMapping("/")
+//    public String index(Model model){
+//
+//        List<Product> products = productService.getProducts();
+//        model.addAttribute("products", products);
+//        return "index";
+//    }
 }
