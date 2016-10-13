@@ -23,5 +23,4 @@ public class CatalogController {
         return "index";
     }
 
-
 }
