@@ -18,8 +18,8 @@ public class CatalogController {
     @RequestMapping("/")
     public String index(Model model){
 
-        List<Product> products = productService.getProducts();
-        model.addAttribute("products", products);
+//        List<Product> products = productService.getProducts();
+//        model.addAttribute("products", products);
         return "index";
     }
 

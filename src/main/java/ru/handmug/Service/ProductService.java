@@ -6,15 +6,28 @@ import ru.handmug.Entity.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
-    public List<Product> getProducts(){
-        Category category1 = new Category();
+    List<Product> products;
 
-        return new ArrayList<Product>(){{
-            add(new Product("Кружка", "Кружка", 300.0f, category1));
-            add(new Product("Шкатулка", "Кружка", 300.0f, category1));
+    public ProductService() {
+        products = new ArrayList<Product>() {{
+            add(new Product(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300.0f, 0));
+            add(new Product(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650.0f, 1));
         }};
+    }
+
+    public List<Product> getProducts(){
+        return products;
+    }
+
+    public Product getProductById(int id) {
+        return products.get(id);
+    }
+
+    public List<Product> getProductsByCategoryId(int categoryId) {
+        return products.stream().filter(product -> product.getCategoryId() == categoryId).collect(Collectors.toList());
     }
 }

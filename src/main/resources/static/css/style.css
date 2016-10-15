@@ -122,7 +122,7 @@ ul.social-in li  i.ic1:hover{
 	position:relative;
 	border-left: 1px solid #a9b2c5;
 	float:left;
-	  width:75%;
+	  width:100%;
 }
 .search input[type="text"] {
 	outline: none;

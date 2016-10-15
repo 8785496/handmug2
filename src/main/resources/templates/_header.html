@@ -10,30 +10,15 @@
 
                     </ul>
                 </div>
-
                 <ul class="header-in">
-                    <li ><a href="products.html" >  brands</a></li>
-                    <li><a href="404.html">about us</a> </li>
-                    <li><a href="contact.html">   contact us</a></li>
-                    <li ><a href="#" >   how to use</a></li>
+                    <li><a th:href="@{/contact}">Контакты</a></li>
                 </ul>
                 <div class="search-top">
                     <div class="search">
                         <form>
-                            <input type="text" value="search about something ?" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'search about something ?';}" />
+                            <input type="text" value="поиск" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'поиск';}" />
                             <input type="submit" value="" />
                         </form>
-                    </div>
-                    <div class="world">
-                        <ul >
-                            <li><a href="#"><span> </span></a> </li>
-                            <li><select class="in-drop">
-                                <option>EN</option>
-                                <option>DE</option>
-                                <option>ES</option>
-                            </select>
-                            </li>
-                        </ul>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -47,39 +32,30 @@
         <div class="container">
             <div class="head-top">
                 <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                    <a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="" /></a>
                 </div>
                 <div class="top-nav">
                     <ul class="megamenu skyblue">
                         <li class="active grid">
-                            <a  href="#">fashion</a>
+                            <a  href="#">Кружки</a>
                         </li>
                         <li>
-                            <a href="#">furniture decor</a>
+                            <a href="#">Шкатулки</a>
                         </li>
                         <li class="grid">
-                            <a  href="#">mobiles tablets</a>
+                            <a  href="#">Игрушки из цветов</a>
                         </li>
-                        <li class="grid">
-                            <a  href="health.html">health beauty</a>
-                        </li>
-                        <li>
-                            <a  href="#">tvs, gaming cameras</a>
-                        </li>
-
-
                     </ul>
                 </div>
                 <div class="cart box_1">
                     <a href="checkout.html">
                         <h3> <div class="total">
                             <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-                            <img src="images/cart.png" alt=""/></h3>
+                            <img th:src="@{/images/cart.png}" alt=""/></h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty"><img src="images/cart-c.png"  alt="" /></a></p>
+                    <p><a href="javascript:;" class="simpleCart_empty"><img th:src="@{/images/cart-c.png}" alt="" /></a></p>
                     <div class="clearfix"> </div>
                 </div>
-
                 <div class="clearfix"> </div>
             </div>
         </div>

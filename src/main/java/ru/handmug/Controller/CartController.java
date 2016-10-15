@@ -1,5 +1,6 @@
 package ru.handmug.Controller;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.handmug.Entity.CartItem;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@Scope("session")
 public class CartController {
     private List<CartItem> items;
 
@@ -40,6 +42,8 @@ public class CartController {
         httpSession.setAttribute("attr", "Hello");
         return cartItem;
     }
+
+
 }
 
 
