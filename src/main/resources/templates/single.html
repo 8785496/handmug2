@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title></title>
+<title th:text="${product.name} + ' - Handmug.ru'"></title>
 <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script th:src="@{/js/jquery.min.js}"></script>
@@ -31,8 +31,7 @@
 <script th:src="@{/js/megamenu.js}" type="text/javascript"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>			
 <link th:href="@{/css/etalage.css}" />
-<script th:src="@{/js/jquery.etalage.min.js}"></script>
-
+<script th:src="@{/js/simpleCart.min.js}"></script>
 </head>
 <body>
 <!--header-->
@@ -44,7 +43,7 @@
 			<div class="col-md-9 top-in-single">
 				<div class="col-md-5 single-top">
 					<div>
-						<img class="etalage_thumb_image img-responsive" th:src="@{/images/si.jpg}" src="" alt="" />
+						<img class="etalage_thumb_image img-responsive" th:src="@{/images/} + ${product.picture.fileNameMiddle}" src="" alt="" />
 					</div>
 				</div>
 				<div class="col-md-7 single-top-in">

@@ -30,8 +30,4 @@ public class TestController {
         return "Сообщение отправлено";
     }
 
-    @RequestMapping("/testCategory")
-    public List<Product> testCategory() {
-        return productService.getProductsByCategoryId(1);
-    }
 }

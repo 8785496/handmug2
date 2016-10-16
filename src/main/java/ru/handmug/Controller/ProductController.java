@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import ru.handmug.Entity.Product;
+import ru.handmug.Service.DataService;
 import ru.handmug.Service.ProductService;
 
 import java.util.List;
@@ -17,12 +18,12 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    DataService dataService;
 
 
     @RequestMapping("/product/{id}")
     public String index(@PathVariable int id, Model model){
-        Product product = productService.getProductById(id);
+        Product product = dataService.getProductById(id);
         model.addAttribute("product", product);
 
         return "single";
