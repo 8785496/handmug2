@@ -7,6 +7,7 @@ import ru.handmug.Entity.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,16 +30,14 @@ public class DataService {
         }};
 
         products = new ArrayList<Product>() {{
-            add(new Product(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300.0f, 0, pictures.get(0)));
-            add(new Product(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300.0f, 0, pictures.get(0)));
-            add(new Product(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300.0f, 0, pictures.get(0)));
-            add(new Product(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300.0f, 0, pictures.get(0)));
-            add(new Product(4, "Сладкие кружки", "Кружка с аппликацией из полимерной глины", 300.0f, 0, pictures.get(0)));
-            add(new Product(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650.0f, 1, pictures.get(0)));
+            add(new Product(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new Product(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new Product(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new Product(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new Product(4, "Сладкие кружки", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new Product(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650, 1, pictures.get(0)));
         }};
     }
-
-
 
     public Product getProductById(int id) {
         for (Product product: products) {
@@ -52,5 +51,19 @@ public class DataService {
 
     public List<Product> getProductsByCategoryId(int categoryId) {
         return products.stream().filter(product -> product.getCategoryId() == categoryId).collect(Collectors.toList());
+    }
+
+    public List<Product> getNewProducts() {
+        List<Product> lastProducts = new ArrayList<>();
+        int count = 0;
+
+        ListIterator<Product> li = products.listIterator(products.size());
+
+        while (count < 5 && li.hasPrevious()) {
+            lastProducts.add(li.previous());
+            count++;
+        }
+
+        return lastProducts;
     }
 }

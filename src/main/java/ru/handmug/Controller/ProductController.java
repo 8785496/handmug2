@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import ru.handmug.Entity.Product;
 import ru.handmug.Service.DataService;
-import ru.handmug.Service.ProductService;
 
 import java.util.List;
 

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.handmug.Entity.Product;
 import ru.handmug.Service.MailService;
-import ru.handmug.Service.ProductService;
 
 import java.util.List;
 
@@ -15,9 +14,6 @@ import java.util.List;
 public class TestController {
     @Autowired
     private MailService mailService;
-
-    @Autowired
-    private ProductService productService;
 
     @RequestMapping("/testmail")
     public String testMail() {

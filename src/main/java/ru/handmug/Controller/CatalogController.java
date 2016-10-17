@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.handmug.Entity.Product;
 import ru.handmug.Service.DataService;
-import ru.handmug.Service.ProductService;
 
 import java.util.List;
 
@@ -20,8 +19,8 @@ public class CatalogController {
     @RequestMapping("/")
     public String index(Model model){
 
-//        List<Product> products = productService.getProducts();
-//        model.addAttribute("products", products);
+        List<Product> products = dataService.getNewProducts();
+        model.addAttribute("products", products);
         return "index";
     }
 
