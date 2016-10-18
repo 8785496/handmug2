@@ -40,37 +40,35 @@
 
 <div class="container">
 	<div class="contact">
-	<h2>CONTACT</h2>
+	<h2>КОНТАКТЫ</h2>
 	<div class="contact-in">
 		<div class=" col-md-3 contact-right">
-			<h5>Company Information</h5>
-					<p>500 Lorem Ipsum Dolor Sit,</p>
-					<p>22-56-2-9 Sit Amet, Lorem,</p>
-					<p>USA</p>
-			<p>Phone:(00) 222 666 444</p>
-			<p>Fax: (000) 000 00 00 0</p>
-			<p>Email: <a href="mailto:info@mycompany.com">info@mycompany.com</a></p>
-			<p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
+			<h5>Информация</h5>
+			<p>Новосибирск</p>
+			<p>Телефон: +7 953 793 33 44</p>
+			<p>WhatsApp: +7 953 793 33 44</p>
+			<p>Email: <a href="mailto:mail@handmug.ru">mail@handmug.ru</a></p>
+			<p>Группы: <a href="#">ВКонтакте</a></p>
 		</div>
 		<div class=" col-md-9 contact-left">
 			<form action="#" th:action="@{/contact}" th:object="${contactForm}" method="post">
 				<div>
-					<span>Name</span>
+					<span>Имя</span>
 					<input th:field="*{name}" type="text" class="textbox" />
-					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 				</div>
 				<div>
 					<span>E-Mail</span>
 					<input th:field="*{email}" type="text" class="textbox" />
-					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</span>
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 				</div>
 				<div>
-					<span>Subject</span>
+					<span>Сообщение</span>
 					<textarea th:field="*{message}" name="userMsg"> </textarea>
-					<span th:if="${#fields.hasErrors('message')}" th:errors="*{message}">Name Error</span>
+					<span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
 				</div>
 			   <div>
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Отправить" />
 			  </div>
 			</form>
 		  </div>

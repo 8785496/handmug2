@@ -66,4 +66,28 @@ public class DataService {
 
         return lastProducts;
     }
+
+    public Category getCategoryById(int id) {
+        if (categories.size() > id) {
+            return categories.get(id);
+        }
+        return null;
+    }
+
+    public List<Product> getProductsByCategoryId(int categoryId, int limit) {
+        ListIterator<Product> li = products.listIterator(products.size());
+        int count = 0;
+        List<Product> listProducts = new ArrayList<>();
+        Product product;
+
+        while (count < limit && li.hasPrevious()) {
+            product = li.previous();
+            if (product.getCategoryId() == categoryId) {
+                listProducts.add(product);
+                count++;
+            }
+        }
+
+        return listProducts;
+    }
 }
