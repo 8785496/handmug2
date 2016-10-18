@@ -1,4 +1,4 @@
-package ru.handmug.Controller;
+package ru.handmug.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,18 +13,12 @@ import ru.handmug.Service.DataService;
 
 import java.util.List;
 
-@Controller
-public class ProductController {
+@RestController
+public class ProductRestController {
 
     @Autowired
     DataService dataService;
 
 
-    @RequestMapping("/product/{id}")
-    public String index(@PathVariable int id, Model model){
-        Product product = dataService.getProductById(id);
-        model.addAttribute("product", product);
 
-        return "single";
-    }
 }

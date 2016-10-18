@@ -1,4 +1,4 @@
-package ru.handmug.Controller;
+package ru.handmug.RestController;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.validation.BindingResult;

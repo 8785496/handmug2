@@ -9,7 +9,7 @@ import ru.handmug.Form.ContactForm;
 import javax.validation.Valid;
 
 @Controller
-public class PageController {
+public class ContactController {
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contact(ContactForm contactForm) {
         return "contact";
