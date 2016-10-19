@@ -2,7 +2,7 @@ package ru.handmug.Entity;
 
 public class CartItem {
     private int productId;
-    private int count;
+    private int quantity;
 
 
     public int getProductId() {
@@ -13,11 +13,11 @@ public class CartItem {
         this.productId = productId;
     }
 
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

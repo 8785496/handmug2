@@ -6,15 +6,31 @@ import java.util.List;
 public class Cart {
     private List<CartItem> cartItems;
 
-    public Cart() {
-        cartItems = new ArrayList<>();
+    public int getTotalQuantity() {
+        return totalQuantity;
     }
 
-    public void addItem(CartItem cartItem) {
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    private int totalQuantity;
+    private int totalPrice;
+
+    public Cart() {
+        cartItems = new ArrayList<>();
+        totalQuantity = 0;
+        totalPrice = 0;
+    }
+
+    public void addItem(CartItem cartItem, int price) {
+        totalQuantity += cartItem.getQuantity();
+        totalPrice += price * cartItem.getQuantity();
+
         for (CartItem item: cartItems) {
             if(item.getProductId() == cartItem.getProductId()) {
-                int oldCount = item.getCount();
-                item.setCount(oldCount + cartItem.getCount());
+                int oldCount = item.getQuantity();
+                item.setQuantity(oldCount + cartItem.getQuantity());
                 return;
             }
         }

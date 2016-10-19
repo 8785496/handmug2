@@ -1,11 +1,13 @@
 package ru.handmug.RestController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.handmug.Entity.Cart;
 import ru.handmug.Entity.CartItem;
 import ru.handmug.Entity.Product;
+import ru.handmug.Service.DataService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -15,7 +17,9 @@ import java.util.List;
 @RestController
 //@Scope("session")
 public class CartRestController {
-    private List<CartItem> items;
+//    private List<CartItem> items;
+    @Autowired
+    private DataService dataService;
 
 //    public CartRestController() {
 //        items = new ArrayList<CartItem>() {{
@@ -38,18 +42,19 @@ public class CartRestController {
     }
 
     @RequestMapping(value = "/api/cartAdd", method = RequestMethod.POST)
-    public List<CartItem> cartAdd(@RequestBody CartItem cartItem, BindingResult bindingResult, HttpSession httpSession) {
+    public Cart cartAdd(@RequestBody CartItem cartItem, BindingResult bindingResult, HttpSession httpSession) {
         //bindingResult.hasErrors();
         Cart cart = (Cart) httpSession.getAttribute("cart");
+        Product product = dataService.getProductById(cartItem.getProductId());
 
         if (cart == null) {
             cart = new Cart();
         }
 
-        cart.addItem(cartItem);
+        cart.addItem(cartItem, product.getPrice());
 
         httpSession.setAttribute("cart", cart);
-        return cart.getCartItems();
+        return cart;
     }
 
 

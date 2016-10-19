@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.handmug.Entity.Cart;
 import ru.handmug.Entity.Category;
 import ru.handmug.Entity.Product;
 import ru.handmug.Service.DataService;
@@ -54,7 +55,13 @@ public class CatalogController {
     }
 
     @RequestMapping("/cart")
-    public String cart(HttpSession httpSession) {
+    public String cart(HttpSession httpSession, Model model) {
+        Cart cart = (Cart)httpSession.getAttribute("cart");
+        if (cart != null) {
+            model.addAttribute(cart);
+        } else {
+            model.addAttribute(new Cart());
+        }
         return "cart";
     }
 
