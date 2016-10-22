@@ -24,28 +24,26 @@
 
 						<label th:text="${product.price} + ' р.'" class="add-to" />
 
-						<a href="#" class="cart ">В корзину</a>
+						<a href="#" class="cart item_add">В корзину</a>
 					</div>
 				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-3 at-single">
+				<div class="single-bottom">
+					<h4>Продукты категории</h4>
+					<div th:each="prod: ${products}" class="product-go">
+						<img class="img-responsive fashion" th:src="@{/images/} + ${prod.picture.fileNameMiddle}" />
+						<div class="grid-product">
+							<a th:text="${prod.name}" th:href="@{/product/} + ${prod.id}" href="#" class="elit"></a>
+							<span th:text="${prod.price} + ' р.'" class=" price-in"></span>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
 			<div class="clearfix"></div>
 		</div>
-				<div class="col-md-3 at-single">
-					<div class="single-bottom">
-						<h4>Продукты категории</h4>
-							<div th:each="prod: ${products}" class="product-go">
-								<img class="img-responsive fashion" th:src="@{/images/} + ${prod.picture.fileNameMiddle}" />
-								<div class="grid-product">
-									<a th:text="${prod.name}" th:href="@{/product/} + ${prod.id}" href="#" class="elit"></a>
-									<span th:text="${prod.price} + ' р.'" class=" price-in"></span>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-				</div>
-				</div>
-				<div class="clearfix"> </div>		
-		</div>
-
-
 	</div>
 </div>
 

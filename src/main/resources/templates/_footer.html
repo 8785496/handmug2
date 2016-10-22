@@ -29,6 +29,13 @@
         </div>
         <div class="clearfix"> </div>
     </div>
+    <script th:inline="javascript">
+        $('.item_add').click(function () {
+            //alert('add cart');
+            var url = [[@{/cart}]];
+            alert(url);
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             /*
