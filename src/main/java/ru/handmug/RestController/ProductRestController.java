@@ -17,8 +17,11 @@ import java.util.List;
 public class ProductRestController {
 
     @Autowired
-    DataService dataService;
+    private DataService dataService;
 
-
+    @RequestMapping(value="/api/products")
+    public List<Product> getProducts() {
+        return dataService.getNewProducts();
+    }
 
 }
