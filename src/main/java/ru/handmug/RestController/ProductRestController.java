@@ -24,4 +24,8 @@ public class ProductRestController {
         return dataService.getNewProducts();
     }
 
+    @RequestMapping(value="/api/product/{id}")
+    public Product getProduct(@PathVariable int id) {
+        return dataService.getProductById(id);
+    }
 }
