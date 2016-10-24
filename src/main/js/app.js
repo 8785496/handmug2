@@ -4,7 +4,7 @@ import Products from './Products';
 
 ReactDOM.render(
     <div>
-        <h1>Hello! 111</h1>
+        <h1>Hello from react!!!!;)))</h1>
         <Products />
     </div>,
     document.getElementById('root')

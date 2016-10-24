@@ -4,9 +4,9 @@ class Product extends Component {
     render() {
         return (
             <tr>
-                <td>1</td>
-                <td>Кружка</td>
-                <td>300</td>
+                <td>{this.props.id}</td>
+                <td>{this.props.name}</td>
+                <td>{this.props.price}</td>
             </tr>
         );
     }

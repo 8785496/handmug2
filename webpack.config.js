@@ -8,8 +8,9 @@ module.exports = {
     cache: true,
     debug: true,
     output: {
-        path: __dirname,
-        filename: './src/main/resources/static/admin/js/bundle.js'
+        path: __dirname + '/src/main/resources/static/admin/js/',
+        publicPath: "/admin/js/",
+        filename: 'bundle.js'
     },
     module: {
         loaders: [
@@ -19,5 +20,19 @@ module.exports = {
                 loader: 'babel-loader'
             }
         ]
+    },
+    devServer: {
+        port: 9000,
+        contentBase: __dirname + '/src/main/resources/templates/admin',
+        proxy: {
+            '/admin**': {
+                target: 'http://localhost:8080',
+                secure: false
+            },
+            '/api**': {
+                target: 'http://localhost:8080',
+                secure: false
+            }
+        }
     }
 };

@@ -12,10 +12,10 @@
     <title>Админ - Handmug</title>
 
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/admin/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/admin/css/bootstrap.min.css}" rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link th:href="@{/admin/css/dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/admin/css/dashboard.css}" rel="stylesheet" href="css/dashboard.css" />
 </head>
 
 <body>
@@ -114,9 +114,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
 <!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
-<script src="../../dist/js/bootstrap.min.js"></script>
-<script th:src="@{/admin/js/bundle.js}"></script>
+<!--<script src="../../dist/js/bootstrap.min.js"></script>-->
+<script th:src="@{/admin/js/bundle.js}" src="/admin/js/bundle.js"></script>
 </body>
 </html>
