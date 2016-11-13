@@ -65,14 +65,21 @@
 				</div>
 			</div>
 
-			<script>$(document).ready(function() {
-				$('.close1').on('click', function() {
+			<script th:inline="javascript">
+				$('.close1').click(function() {
 					var parent = $(this).parent();
-					$(parent).fadeOut('slow', function() {
-						$(this).remove();
+					var url = [[@{/api/cart/remove}]];
+
+					$.post(url, function (response) {
+						console.log(response);
 					});
+
+//					$(parent).fadeOut('slow', function() {
+//						var self = $(this).remove();
+//
+//
+//					});
 				});
-			});
 			</script>
 		</div>
 		<div class="clearfix"> </div>

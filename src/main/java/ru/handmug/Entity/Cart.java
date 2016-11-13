@@ -38,6 +38,16 @@ public class Cart {
         cartItems.add(cartItem);
     }
 
+    public void removeItem(int id) {
+        for (int i = 0; i < cartItems.size(); i++) {
+            if(cartItems.get(id).getProductId() == id) {
+                cartItems.remove(id);
+
+                return;
+            }
+        }
+    }
+
     public List<CartItem> getCartItems() {
         return cartItems;
     }

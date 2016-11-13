@@ -30,10 +30,36 @@
         <div class="clearfix"> </div>
     </div>
     <script th:inline="javascript">
-        $('.item_add').click(function () {
-            //alert('add cart');
-            var url = [[@{/cart}]];
-            alert(url);
+        $('.item_add').click(function (e) {
+            var url = [[@{/api/cart/add}]];
+            var id = $(this).data('id');
+            var data = {productId: id, quantity: 1};
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json; UTF-8',
+                success: function (response) {
+                    console.log(response);
+                    $('.simpleCart_total').text(response.totalPrice);
+                    $('.simpleCart_quantity').text(response.totalQuantity);
+                }
+            });
+
+            return false;
+        });
+
+        $('.simpleCart_empty').click(function() {
+            var parent = $(this).parent();
+            var url = [[@{/api/cart/remove}]];
+
+            $.post(url, function (response) {
+                console.log(response);
+                $('.simpleCart_total').text(response.totalPrice);
+                $('.simpleCart_quantity').text(response.totalQuantity);
+            });
         });
     </script>
     <script type="text/javascript">

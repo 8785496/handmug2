@@ -1,5 +1,6 @@
 package ru.handmug.RestController;
 
+import com.sun.mail.pop3.POP3Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.validation.BindingResult;
@@ -41,7 +42,7 @@ public class CartRestController {
         }
     }
 
-    @RequestMapping(value = "/api/cartAdd", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/cart/add", method = RequestMethod.POST)
     public Cart cartAdd(@RequestBody CartItem cartItem, BindingResult bindingResult, HttpSession httpSession) {
         //bindingResult.hasErrors();
         Cart cart = (Cart) httpSession.getAttribute("cart");
@@ -57,7 +58,25 @@ public class CartRestController {
         return cart;
     }
 
+    @RequestMapping(value = "/api/cart/remove", method = RequestMethod.POST)
+    public Cart cartRemove(HttpSession httpSession) {
+        httpSession.removeAttribute("cart");
 
+        return new Cart();
+    }
+
+    @RequestMapping(value = "/api/cart/remove/:id", method = RequestMethod.POST)
+    public Cart cartRemoveItem(HttpSession httpSession) {
+//        Cart cart = (Cart) httpSession.getAttribute("cart");
+//        if (cart == null) {
+//            cart = new Cart();
+//        }
+//
+//
+//
+//        return new Cart();
+        return null;
+    }
 }
 
 
