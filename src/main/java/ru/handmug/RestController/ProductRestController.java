@@ -19,13 +19,20 @@ public class ProductRestController {
     @Autowired
     private DataService dataService;
 
-    @RequestMapping(value="/api/products")
+    @RequestMapping(value = "/api/products", method = RequestMethod.GET)
     public List<Product> getProducts() {
         return dataService.getNewProducts();
     }
 
-    @RequestMapping(value="/api/product/{id}")
+    @RequestMapping(value = "/api/product/{id}", method = RequestMethod.GET)
     public Product getProduct(@PathVariable int id) {
         return dataService.getProductById(id);
+    }
+
+    @RequestMapping(value = "/api/product/{id}", method = RequestMethod.DELETE)
+    public List<Product> deleteProduct(@PathVariable int id) {
+        dataService.deleteProduct(id);
+
+        return dataService.getNewProducts();
     }
 }

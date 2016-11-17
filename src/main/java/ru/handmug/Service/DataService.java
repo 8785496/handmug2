@@ -6,6 +6,7 @@ import ru.handmug.Entity.Picture;
 import ru.handmug.Entity.Product;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
@@ -89,5 +90,16 @@ public class DataService {
         }
 
         return listProducts;
+    }
+
+    public void deleteProduct(int id) {
+        Iterator<Product> iterator = products.iterator();
+
+        while (iterator.hasNext()) {
+            if (iterator.next().getId() == id) {
+                iterator.remove();
+                return;
+            }
+        }
     }
 }
