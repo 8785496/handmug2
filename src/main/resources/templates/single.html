@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="${product.name} + ' - Handmug.ru'"></title>
+<title th:text="${productView.name} + ' - Handmug.ru'"></title>
 <div th:replace="_head" />
 </head>
 <body>
@@ -14,15 +14,15 @@
 			<div class="col-md-9 top-in-single">
 				<div class="col-md-5 single-top">
 					<div>
-						<img class="etalage_thumb_image img-responsive" th:src="@{/images/} + ${product.picture.fileNameMiddle}" src="" alt="" />
+						<img class="etalage_thumb_image img-responsive" th:src="@{/images/} + ${productView.picture.fileNameMiddle}" src="" alt="" />
 					</div>
 				</div>
 				<div class="col-md-7 single-top-in">
 					<div class="single-para">
-						<h4 th:text="${product.name}" />
-						<p th:text="${product.description}"></p>
+						<h4 th:text="${productView.name}" />
+						<p th:text="${productView.description}"></p>
 
-						<label th:text="${product.price} + ' р.'" class="add-to" />
+						<label th:text="${productView.price} + ' р.'" class="add-to" />
 
 						<a href="#" class="cart item_add">В корзину</a>
 					</div>
@@ -32,10 +32,10 @@
 			<div class="col-md-3 at-single">
 				<div class="single-bottom">
 					<h4>Продукты категории</h4>
-					<div th:each="prod: ${products}" class="product-go">
+					<div th:each="prod: ${productViews}" class="productView-go">
 						<img class="img-responsive fashion" th:src="@{/images/} + ${prod.picture.fileNameMiddle}" />
-						<div class="grid-product">
-							<a th:text="${prod.name}" th:href="@{/product/} + ${prod.id}" href="#" class="elit"></a>
+						<div class="grid-productView">
+							<a th:text="${prod.name}" th:href="@{/productView/} + ${prod.id}" href="#" class="elit"></a>
 							<span th:text="${prod.price} + ' р.'" class=" price-in"></span>
 						</div>
 						<div class="clearfix"></div>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.handmug.Entity.Cart;
 import ru.handmug.Entity.Category;
-import ru.handmug.Entity.Product;
+import ru.handmug.Entity.ProductView;
 import ru.handmug.Service.DataService;
 
 import javax.servlet.http.HttpSession;
@@ -22,8 +22,8 @@ public class CatalogController {
     @RequestMapping("/")
     public String index(Model model){
 
-        List<Product> products = dataService.getNewProducts();
-        model.addAttribute("products", products);
+        List<ProductView> productViews = dataService.getNewProducts();
+        model.addAttribute("products", productViews);
         return "index";
     }
 
@@ -37,19 +37,19 @@ public class CatalogController {
 
         model.addAttribute("category", category);
 
-        List<Product> products = dataService.getProductsByCategoryId(id);
-        model.addAttribute("products", products);
+        List<ProductView> productViews = dataService.getProductsByCategoryId(id);
+        model.addAttribute("products", productViews);
 
-        return "products";
+        return "productViews";
     }
 
     @RequestMapping("/product/{id}")
     public String index(@PathVariable int id, Model model){
-        Product product = dataService.getProductById(id);
-        model.addAttribute("product", product);
+        ProductView productView = dataService.getProductById(id);
+        model.addAttribute("product", productView);
 
-        List<Product> products = dataService.getProductsByCategoryId(product.getCategoryId(), 3);
-        model.addAttribute("products", products);
+        List<ProductView> productViews = dataService.getProductsByCategoryId(productView.getCategoryId(), 3);
+        model.addAttribute("products", productViews);
 
         return "single";
     }

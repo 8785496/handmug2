@@ -4,18 +4,16 @@ import org.springframework.stereotype.Service;
 import ru.handmug.Entity.Category;
 import ru.handmug.Entity.Picture;
 import ru.handmug.Entity.Product;
+import ru.handmug.Entity.ProductView;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class DataService {
     private List<Category> categories;
     private List<Picture> pictures;
-    private  List<Product> products;
+    private List<ProductView> productViews;
 
     public DataService() {
         pictures = new ArrayList<Picture>() {{
@@ -30,42 +28,56 @@ public class DataService {
             add(new Category(2, "Игрушки из цветов", ""));
         }};
 
-        products = new ArrayList<Product>() {{
-            add(new Product(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new Product(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new Product(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new Product(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new Product(4, "Сладкие кружки", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new Product(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650, 1, pictures.get(0)));
+        productViews = new ArrayList<ProductView>() {{
+            add(new ProductView(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new ProductView(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new ProductView(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new ProductView(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new ProductView(4, "Сладкие кружки", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
+            add(new ProductView(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650, 1, pictures.get(0)));
         }};
     }
 
-    public Product getProductById(int id) {
-        for (Product product: products) {
-            if (product.getId() == id) {
-                return product;
+    public ProductView getProductById(int id) {
+        for (ProductView productView : productViews) {
+            if (productView.getId() == id) {
+                return productView;
             }
         }
 
         return null;
     }
 
-    public List<Product> getProductsByCategoryId(int categoryId) {
-        return products.stream().filter(product -> product.getCategoryId() == categoryId).collect(Collectors.toList());
+    public Picture getPictureById(int id) {
+        for (Picture picture: pictures) {
+            if (picture.getId() == id) {
+                return picture;
+            }
+        }
+
+        return null;
     }
 
-    public List<Product> getNewProducts() {
-        List<Product> lastProducts = new ArrayList<>();
+    public List<ProductView> getProductsByCategoryId(int categoryId) {
+        return productViews.stream().filter(product -> product.getCategoryId() == categoryId).collect(Collectors.toList());
+    }
+
+    public List<ProductView> getNewProducts() {
+        List<ProductView> lastProductViews = new ArrayList<>();
         int count = 0;
 
-        ListIterator<Product> li = products.listIterator(products.size());
+        ListIterator<ProductView> li = productViews.listIterator(productViews.size());
 
         while (count < 5 && li.hasPrevious()) {
-            lastProducts.add(li.previous());
+            lastProductViews.add(li.previous());
             count++;
         }
 
-        return lastProducts;
+        return lastProductViews;
+    }
+
+    public List<ProductView> getAllProducts() {
+        return productViews;
     }
 
     public Category getCategoryById(int id) {
@@ -75,25 +87,25 @@ public class DataService {
         return null;
     }
 
-    public List<Product> getProductsByCategoryId(int categoryId, int limit) {
-        ListIterator<Product> li = products.listIterator(products.size());
+    public List<ProductView> getProductsByCategoryId(int categoryId, int limit) {
+        ListIterator<ProductView> li = productViews.listIterator(productViews.size());
         int count = 0;
-        List<Product> listProducts = new ArrayList<>();
-        Product product;
+        List<ProductView> listProductViews = new ArrayList<>();
+        ProductView productView;
 
         while (count < limit && li.hasPrevious()) {
-            product = li.previous();
-            if (product.getCategoryId() == categoryId) {
-                listProducts.add(product);
+            productView = li.previous();
+            if (productView.getCategoryId() == categoryId) {
+                listProductViews.add(productView);
                 count++;
             }
         }
 
-        return listProducts;
+        return listProductViews;
     }
 
     public void deleteProduct(int id) {
-        Iterator<Product> iterator = products.iterator();
+        Iterator<ProductView> iterator = productViews.iterator();
 
         while (iterator.hasNext()) {
             if (iterator.next().getId() == id) {
@@ -101,5 +113,25 @@ public class DataService {
                 return;
             }
         }
+    }
+
+    public boolean addProduct(Product product) {
+        int id = (int) new Date().getTime();
+        Picture picture = getPictureById(product.getPictureId());
+
+        ProductView productView =  new ProductView(id, product.getName(), product.getDescription(), product.getPrice(), product.getCategoryId(), picture);
+
+        return productViews.add(productView);
+    }
+
+    public void updateProduct(int id, Product product) {
+        Picture picture = getPictureById(product.getPictureId());
+
+        ProductView productView = getProductById(id);
+        productView.setName(product.getName());
+        productView.setDescription(product.getDescription());
+        productView.setPrice(product.getPrice());
+        productView.setCategoryId(product.getCategoryId());
+        productView.setPicture(picture);
     }
 }

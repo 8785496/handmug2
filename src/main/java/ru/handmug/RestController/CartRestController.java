@@ -1,17 +1,14 @@
 package ru.handmug.RestController;
 
-import com.sun.mail.pop3.POP3Store;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.handmug.Entity.Cart;
 import ru.handmug.Entity.CartItem;
-import ru.handmug.Entity.Product;
+import ru.handmug.Entity.ProductView;
 import ru.handmug.Service.DataService;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +43,13 @@ public class CartRestController {
     public Cart cartAdd(@RequestBody CartItem cartItem, BindingResult bindingResult, HttpSession httpSession) {
         //bindingResult.hasErrors();
         Cart cart = (Cart) httpSession.getAttribute("cart");
-        Product product = dataService.getProductById(cartItem.getProductId());
+        ProductView productView = dataService.getProductById(cartItem.getProductId());
 
         if (cart == null) {
             cart = new Cart();
         }
 
-        cart.addItem(cartItem, product.getPrice());
+        cart.addItem(cartItem, productView.getPrice());
 
         httpSession.setAttribute("cart", cart);
         return cart;

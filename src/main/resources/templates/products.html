@@ -10,21 +10,21 @@
 <div th:replace="_header" />
 
 <div class="container">
-	<div class="product">
+	<div class="productView">
 		<h2 th:text="${category.name}" class="new"></h2>
 
-		<div th:each="prod, j: ${products}" th:if="${j.index} % 4 == 0" class="pink">
-			<div th:each="product, i: ${products}"
+		<div th:each="prod, j: ${productViews}" th:if="${j.index} % 4 == 0" class="pink">
+			<div th:each="productView, i: ${productViews}"
 				 th:if="${i.index} >= ${j.index} and ${i.index} &lt; ${j.index} + 4"
 				 class="col-md-3 box-in-at">
 				<div class=" grid_box portfolio-wrapper">
-					<a th:href="@{/product/} + ${product.id}" href="single.html" >
-						<img th:src="@{/images/} + ${product.picture.fileNameSmall}" class="img-responsive" alt="" />
+					<a th:href="@{/productView/} + ${productView.id}" href="single.html" >
+						<img th:src="@{/images/} + ${productView.picture.fileNameSmall}" class="img-responsive" alt="" />
 					</a>
 				</div>
 				<div class="grid_1 simpleCart_shelfItem">
-					<a href="#" class="cup item_add" th:attr="data-id=${product.id}">
-						<span class="item_price"><span th:text="${product.price} + ' р. '"></span><i></i></span>
+					<a href="#" class="cup item_add" th:attr="data-id=${productView.id}">
+						<span class="item_price"><span th:text="${productView.price} + ' р. '"></span><i></i></span>
 					</a>
 				</div>
 			</div>

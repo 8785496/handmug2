@@ -13,6 +13,8 @@ public class Picture {
         this.fileNameSmall = fileNameSmall;
     }
 
+    public Picture() {}
+
     public int getId() {
         return id;
     }

@@ -1,20 +1,31 @@
 package ru.handmug.Entity;
 
-public class Product {
+public class ProductView {
     private int id;
     private String name;
     private String description;
     private int price;
     private int categoryId;
-    private int pictureId;
+    private Picture picture;
 
-    public Product() {}
+    public ProductView(int id, String name, String description, int price, int categoryId, Picture picture) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoryId = categoryId;
+        this.picture = picture;
+    }
 
+    public ProductView() {}
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -48,11 +59,12 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public int getPictureId() {
-        return pictureId;
+    public Picture getPicture() {
+        return picture;
     }
 
-    public void setPictureId(int pictureId) {
-        this.pictureId = pictureId;
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
+
 }
