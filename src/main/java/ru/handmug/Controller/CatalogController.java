@@ -40,7 +40,7 @@ public class CatalogController {
         List<ProductView> productViews = dataService.getProductsByCategoryId(id);
         model.addAttribute("products", productViews);
 
-        return "productViews";
+        return "products";
     }
 
     @RequestMapping("/product/{id}")

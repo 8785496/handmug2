@@ -90,28 +90,29 @@ ul.social-in li span{
 	margin:0 1em 0 0;
 }
 ul.social-in li  i{
-	background: url(../images/img-sprite.png)no-repeat -11px -11px;
+	/*background: url(../images/img-sprite.png)no-repeat -11px -11px;*/
 	width: 25px;
 	height: 25px;
 	display: inline-block;
 	vertical-align: middle;
 	  margin-right: 5px;
+	color: #A9B2C5;
 }
-ul.social-in li  i.ic{
+/*ul.social-in li  i.ic{
 	background-position: -35px -11px;
 }
 ul.social-in li  i.ic1{
 	background-position:-62px -11px;
-}
+}*/
 ul.social-in li  i:hover{
-	background-position:-11px -47px;
+	color: #fa7455;
 }
-ul.social-in li  i.ic:hover{
+/*ul.social-in li  i.ic:hover{
 	background-position:-35px -50px;
 }
 ul.social-in li  i.ic1:hover{
 	background-position:-62px -48px;
-}
+}*/
 .search{
 	position:relative;
 	border-left: 1px solid #a9b2c5;

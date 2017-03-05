@@ -17,7 +17,11 @@ public class DataService {
 
     public DataService() {
         pictures = new ArrayList<Picture>() {{
-            add(new Picture(0, "Кружка Пушистая овечка", "mug_1_m.jpg", "mug_1_s.jpg"));
+            add(new Picture(1, "Кружка Пушистая овечка", "mug_1_m.jpg", "mug_1_s.jpg"));
+            add(new Picture(2, "Кружка Пингвин", "mug_2_m.jpg", "mug_2_s.jpg"));
+            add(new Picture(3, "Кружка Пушистая овечка", "mug_3_m.jpg", "mug_3_s.jpg"));
+            add(new Picture(4, "Кружка Именная", "mug_4_m.jpg", "mug_4_s.jpg"));
+            add(new Picture(10, "Шкатулка Мамины сокровища для мальчиков", "rich_1_m.jpg", "rich_1_s.jpg"));
         }};
 
         categories = new ArrayList<Category>() {{
@@ -29,12 +33,11 @@ public class DataService {
         }};
 
         productViews = new ArrayList<ProductView>() {{
-            add(new ProductView(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new ProductView(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new ProductView(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new ProductView(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new ProductView(4, "Сладкие кружки", "Кружка с аппликацией из полимерной глины", 300, 0, pictures.get(0)));
-            add(new ProductView(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650, 1, pictures.get(0)));
+            add(new ProductView(0, "Кружка \"Пингивин\"", "Кружка с аппликацией из полимерной глины", 300, 0, getPictureById(2)));
+            add(new ProductView(1, "Кружка \"Сова в бантике\"", "Кружка с аппликацией из полимерной глины", 300, 0, getPictureById(1)));
+            add(new ProductView(2, "Кружка \"Именная\"", "Кружка с аппликацией из полимерной глины", 300, 0, getPictureById(4)));
+            add(new ProductView(3, "Кружка \"Пушистая овечка\"", "Кружка с аппликацией из полимерной глины", 300, 0, getPictureById(3)));
+            add(new ProductView(10, "Шкатулка \"Мамины сокровища для мальчиков\"", "Чудесный набор для хранения самых дорогих вещей", 650, 1, getPictureById(10)));
         }};
     }
 
